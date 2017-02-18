@@ -67,3 +67,18 @@ Automatically starts when system starts
 ```sh
 sudo systemctl enable mongodb
 ```
+
+## Installing on Fedora 25
+
+Create this file `sudo vim /etc/yum.repos.d/mongodb-org-3.4.repo` and paste this:
+
+```sh
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+```
+
+Then run `sudo dnf update` and `sudo dnf install -y mongodb-org`
