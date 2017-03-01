@@ -7,7 +7,7 @@ endif
 
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "go,python"
+let g:vim_bootstrap_langs = "go,html,javascript,python"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -43,12 +43,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 
-"" Added plugins
-Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'w0rp/ale'
-Plug 'Shougo/neocomplete.vim'
-
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
@@ -72,7 +66,8 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
+Plug 'ajh17/Spacegray.vim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -83,10 +78,30 @@ Plug 'tomasr/molokai'
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
 
+" html
+"" HTML Bundle
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+
+" javascript
+"" Javascript Bundle
+Plug 'jelera/vim-javascript-syntax'
+
+
 " python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 
+"" Added plugins
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
+Plug 'Shougo/neocomplete.vim'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -157,7 +172,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  colorscheme spacegray
 endif
 
 set mousemodel=popup
@@ -521,6 +536,21 @@ augroup go
 augroup END
 
 
+" html
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+
+" javascript
+let g:javascript_enable_domhtmlcss = 1
+
+" vim-javascript
+augroup vimrc-javascript
+  autocmd!
+  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+augroup END
+
+
 " python
 " vim-python
 augroup vimrc-python
@@ -701,3 +731,5 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+" use .js for jsx files
+let g:jsx_ext_required = 0
