@@ -20,6 +20,27 @@ It has support for:
 nvim +PlugInstall +qall
 ```
 
+## Install tern globally for JavaScript Autocomplete
+
+```sh
+yarn global add tern
+```
+
+## Add Python support
+If you're using virtualenv (I've named my virtualenv as python3) like me, do the following:
+
+```sh
+workon python3
+pip install --upgrade neovim
+```
+
+If not, do this:
+
+```sh
+# In my machine, pip is for Python 2
+sudo pip install --upgrade neovim
+```
+
 ## Commands
 
 - Autocomplete: `Ctrl + Space`
@@ -44,6 +65,9 @@ nvim +PlugInstall +qall
 - Move multiple lines up: `Shift + v`, select up `k` or select down `j`, then `Ctrl + k`
 - Move line down: `Ctrl + j`
 - Move multiple lines down: `Shift + v`, select up `k` or select down `j`, then `Ctrl + j`
+- In insert mode
+  - Right indent: `Ctrl + t`
+  - Left indend: `Ctrl + d`
 
 -------
 
