@@ -20,6 +20,12 @@ It has support for:
 nvim +PlugInstall +qall
 ```
 
+## Enable colors when working with tmux
+
+```
+echo 'set -g default-terminal "screen-256color"' >> ~/.tmux.conf
+```
+
 ## Commands
 
 - Autocomplete: `Ctrl + Space`
