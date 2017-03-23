@@ -104,6 +104,8 @@ Plug 'ervandew/supertab'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Vim alignment plugin
+Plug 'junegunn/vim-easy-align'
 
 
 "*****************************************************************************
