@@ -95,7 +95,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'davidhalter/jedi-vim'
 
 "" Added plugins
-Plug 'ajh17/Spacegray.vim'
+" Plug 'ajh17/Spacegray.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
@@ -181,7 +181,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme spacegray
+  colorscheme monokai
 endif
 
 set mousemodel=popup
