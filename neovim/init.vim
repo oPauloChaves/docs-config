@@ -95,7 +95,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'davidhalter/jedi-vim'
 
 "" Added plugins
-" Plug 'ajh17/Spacegray.vim'
+Plug 'ajh17/Spacegray.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
@@ -105,7 +105,6 @@ Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 " Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
-
 
 "*****************************************************************************
 "*****************************************************************************
@@ -181,7 +180,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme monokai
+  colorscheme spacegray
 endif
 
 set mousemodel=popup
