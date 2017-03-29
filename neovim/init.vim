@@ -68,6 +68,7 @@ Plug 'honza/vim-snippets'
 "" Color
 " Plug 'tomasr/molokai'
 Plug 'mhartington/oceanic-next'
+" Plug 'ajh17/Spacegray.vim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -77,9 +78,15 @@ Plug 'mhartington/oceanic-next'
 "" Go Lang Bundle
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
 
 " html
 "" HTML Bundle
+Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
@@ -88,24 +95,17 @@ Plug 'mattn/emmet-vim'
 
 " javascript
 "" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs'
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jsdoc-syntax.vim'
+Plug 'heavenshell/vim-jsdoc'
 
 
 " python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
-
-"" Added plugins
-Plug 'ajh17/Spacegray.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-" Vim alignment plugin
-Plug 'junegunn/vim-easy-align'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -131,6 +131,7 @@ set fileencodings=utf-8
 set bomb
 set binary
 
+nnoremap ; :
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -205,6 +206,7 @@ else
   let g:indentLine_enabled = 1
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
+  let g:indentLine_color_gui = '#3A4045'
   let g:indentLine_faster = 1
 
   
