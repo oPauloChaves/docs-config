@@ -67,6 +67,7 @@ Plug 'honza/vim-snippets'
 
 "" Color
 " Plug 'tomasr/molokai'
+Plug 'mhartington/oceanic-next'
 
 "*****************************************************************************
 "" Custom bundles
@@ -174,13 +175,17 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
-syntax on
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+syntax enable
 set ruler
 set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme spacegray
+  colorscheme OceanicNext
 endif
 
 set mousemodel=popup
