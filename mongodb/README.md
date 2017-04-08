@@ -82,3 +82,19 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 ```
 
 Then run `sudo dnf update` and `sudo dnf install -y mongodb-org`
+
+## Export a database
+```sh
+mongodump -h <HOST:PORT> -u <USER> -p <PASSWORD> -d <DATABASE> -o <DUMP_DIR>
+```
+
+## Restore a database
+```sh
+# localhost
+mongorestore -h localhost:27017 -d <DATABASE> <DUMP_DIR>
+
+# Anywhere with auth
+mongorestore -h <HOST:PORT> -d <DATABASE> -u <USER> -p <PASSWORD> <DUMP_DIR>
+```
+
+> `mongodump` and `mongorestore` deal with binary dump. It's a recommended way to backup your db because they preserve all bson types which doesn't happen when you use `mongoimport` and `mongoexport` which deal with json and xml files.
