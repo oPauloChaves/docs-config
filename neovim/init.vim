@@ -77,6 +77,7 @@ Plug 'mhartington/oceanic-next'
 " elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
+Plug 'slashmili/alchemist.vim'
 
 " go
 "" Go Lang Bundle
