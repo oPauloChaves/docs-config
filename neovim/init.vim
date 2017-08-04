@@ -7,7 +7,7 @@ endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "go,html,javascript,python"
+let g:vim_bootstrap_langs = "go,elixir,html,javascript,python"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -73,6 +73,10 @@ Plug 'mhartington/oceanic-next'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
+
+" elixir
+Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'
 
 " go
 "" Go Lang Bundle
@@ -463,6 +467,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
+
+" elixir
 
 " go
 let g:tagbar_type_go = {
