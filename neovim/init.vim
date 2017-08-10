@@ -374,6 +374,12 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Custom configs
 "*****************************************************************************
 
+" Elixir
+" Download elixir and opt source from github and extract them in the below folder
+let g:alchemist#elixir_erlang_src = "/usr/local/share/src"
+let g:alchemist_tag_map = '<C-]>'
+let g:alchemist_tag_stack_map = '<C-T>'
+
 " Syntax highlight
 " Default highlight is better than polyglot
 let g:polyglot_disabled = ['python', 'elixir']
@@ -448,17 +454,18 @@ let g:ale_javascript_eslint_executable = 'eslint_d'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
-" augroup AleGroup
-"     autocmd!
-"     autocmd User ALELint call TouchOpenFile()
-" augroup END
+augroup AleGroup
+    autocmd!
+    autocmd User ALELint call TouchOpenFile()
+augroup END
 
-" func! TouchOpenFile()
-"     let g:ale_enabled = 0
-"     sleep 500m
-"     w                                                 
-"     let g:ale_enabled = 1
-" endfunc
+" hack to enable code reload when working with phoenix
+func! TouchOpenFile()
+    let g:ale_enabled = 0
+    sleep 500m
+    w                                                 
+    let g:ale_enabled = 1
+endfunc
 
 " Ale lint customs
 " let g:ale_linters = {
