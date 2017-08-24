@@ -34,7 +34,6 @@ Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/CSApprox'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhartington/oceanic-next'
 
@@ -48,12 +47,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
-if v:version >= 704
-  "" Snippets
-  Plug 'SirVer/ultisnips'
-  Plug 'FelikZ/ctrlp-py-matcher'
-endif
-
+Plug 'SirVer/ultisnips'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'honza/vim-snippets'
 
 " go
@@ -74,6 +69,7 @@ Plug 'mattn/emmet-vim'
 " javascript
 "" Javascript Bundle
 Plug 'othree/yajs'
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jsdoc-syntax.vim'
@@ -342,12 +338,6 @@ noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
-
 "" Buffer nav
 noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
@@ -392,8 +382,8 @@ endfunction
 
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
-let g:syntastic_go_checkers = ['golint', 'govet']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+" let g:syntastic_go_checkers = ['golint', 'govet']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -439,18 +429,6 @@ augroup go
   au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
 
 augroup END
-
-" Elixir
-" Download elixir and opt source from github and extract them in the below folder
-let g:alchemist#elixir_erlang_src = "/usr/local/share/src"
-let g:alchemist_tag_map = '<C-]>'
-let g:alchemist_tag_stack_map = '<C-T>'
-
-" Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python', 'elixir']
-let python_highlight_all = 1
-
 
 "*****************************************************************************
 "" Convenience variables
@@ -506,12 +484,7 @@ augroup vimrc-javascript
   autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
 augroup END
 
-"*****************************************************************************
-"*****************************************************************************
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
+" *****************************************************************************
 " Settings for Ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
@@ -520,33 +493,25 @@ let g:ale_javascript_eslint_executable = 'eslint_d'
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
-" augroup AleGroup
-"     autocmd!
-"     autocmd User ALELint call TouchOpenFile()
-" augroup END
+" *****************************************************************************
+" Settings for Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
 
-" hack to enable code reload when working with phoenix
-" func! TouchOpenFile()
-"     let g:ale_enabled = 0
-"     sleep 500m
-"     w                                                 
-"     let g:ale_enabled = 1
-" endfunc
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
-" Ale lint customs
-" let g:ale_linters = {
-" \   'javascript': ['eslint'],
-" \}
-
-" let g:ale_lint_on_save = 1
-" let g:ale_lint_on_text_changed = 0
-" You can disable this option too
-" if you don't want linters to run on opening a file
-" let g:ale_lint_on_enter = 0
+" or just disable the preview entirely
+set completeopt-=preview
 
 "*****************************************************************************
-"*****************************************************************************
-
 " Map autocomplete to Ctrl+Space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
@@ -564,24 +529,15 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
-
-set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-
-" or just disable the preview entirely
-set completeopt-=preview
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+"*****************************************************************************
+" Tern settings
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_prefix=','
+let g:tern_map_keys=1
